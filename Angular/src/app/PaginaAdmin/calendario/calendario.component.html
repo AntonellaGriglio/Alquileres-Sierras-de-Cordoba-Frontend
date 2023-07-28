@@ -1,0 +1,22 @@
+<app-nav-admin [idComplejo]="idComplejo"></app-nav-admin>
+<div class="row busca">
+  <div class="col-2"></div>
+  <div class="col-6">
+<form >
+  <h5>Alojamiento</h5>
+  <select class="form-select" aria-label="Default select example" name="alojamiento" [(ngModel)]="idAlojamiento">
+    <option selected>Seleccione el alojamiento</option>
+    <option *ngFor="let alo of listaAlojamiento" [value]="alo.idAlojamiento">{{alo.descripcion}}</option>
+  </select>
+  <button class="custom-btn btn-2" (click)="cargar()">Buscar</button>
+</form>
+</div>
+<div class="col-2"></div>
+</div>
+
+
+<div class="calendar-container calendario">
+  <full-calendar
+    [options]="calendarOptions"
+  ></full-calendar>
+</div>

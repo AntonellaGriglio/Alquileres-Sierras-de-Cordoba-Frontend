@@ -1,0 +1,36 @@
+<app-nav-admin [idComplejo]="this.idComplejo"></app-nav-admin>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Fecha Estadia</th>
+        <th scope="col">Fecha Ing egr</th>
+        <th scope="col">Importe Total </th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Importe Pago</th>
+        <th scope="col">Fecha Pago</th>
+        <th scope="col">Tipo de Pago</th>
+        <th scope="col">Forma de Pago</th>
+        <th ></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let pag of listaPagos | paginate: paginationConfig">
+      <tr>
+        <th scope="row"></th>
+        <td >{{pag.fechaEstadia | date:'dd/MM/yyyy'}}</td>
+        <td>{{pag.fechaIngreso | date:'dd/MM/yyyy'}} a {{pag.fechaEgreso | date:'dd/MM/yyyy'}}</td>
+        <td>{{pag.importeTotal | currency:'ARS':'symbol':'1.2-2'}}</td>
+        <td>{{pag.nombre}}, {{pag.apellido}}</td>
+        <td>{{ pag.importePago | currency:'ARS':'symbol':'1.2-2' }}</td>
+        <td>{{pag.fechaPago |date:'dd/MM/yyyy'}}</td>
+        <td>{{pag.tipoPago}}</td>
+        <td>{{pag.formaPago}}</td>
+        <td>  <button class="custom-btn btn-2" type="button" [routerLink]="'/modificaPago/'+idComplejo+'/'+pag.idPago+'/'+pag.idPersona+'/'+ pag.importeTotal">Modificar</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row pag">
+    <!-- Pagination controls -->
+    <pagination-controls [currentPage]="paginationConfig.currentPage" (pageChange)="onPageChange($event)" id="h" [config]="paginationConfig"></pagination-controls>
+  </div>
+

@@ -1,0 +1,15 @@
+<app-nav-inicio></app-nav-inicio>
+<div class="row card-group">
+    <div class="col-3 " *ngFor="let complejo of listaComplejos" >
+      <div class="card" style="width: 18rem; ">
+        <img src={{complejo.linkFotos}} class="card-img-top img-responsive" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{complejo.nombreComplejo}}</h5>
+          <a href="#" class="custom-btn btn-2"  routerLink="listaAlojamiento/complejo.idComplejo" (click)="idComplejo(complejo.idComplejo)">+ Información</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <app-footer></app-footer>
+  </div>

@@ -1,0 +1,114 @@
+
+        <form [formGroup]="formularioPersona"  class=" text-black"  >
+            <h3>Contactanos: </h3>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" name="nombre" formControlName="nombre">
+              <div *ngIf="formularioPersona.get('nombre')?.invalid && formularioPersona.get('nombre')?.touched">
+                <div class="text-danger" *ngIf="formularioPersona.get('nombre')?.hasError('required')">El nombre es requerido</div>
+              </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="apellido" formControlName="apellido" >
+                <div *ngIf="formularioPersona.get('apellido')?.invalid && formularioPersona.get('apellido')?.touched">
+                  <div class="text-danger" *ngIf="formularioPersona.get('apellido')?.hasError('required')">El apellido es requerido</div>
+                </div>
+              </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Telefono</label>
+              <input type="string" class="form-control" id="exampleInputEmail1" name="telefono"formControlName="telefono" >
+              <div *ngIf="formularioPersona.get('telefono')?.invalid && formularioPersona.get('telefono')?.touched">
+                <div class="text-danger" *ngIf="formularioPersona.get('telefono')?.hasError('required')">El Telefono es requerido</div>
+              </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email"  aria-describedby="emailHelp" formControlName="email">
+                <div *ngIf="formularioPersona.get('email')?.invalid && formularioPersona.get('email')?.touched">
+                  <div class="text-danger" *ngIf="formularioPersona.get('email')?.hasError('required')">El email es requerido</div>
+                </div>
+              </div>
+            <div class="mb-3"  >
+                <label for="exampleInputEmail1" class="form-label">Provincia</label>
+                <select class="form-select" aria-label="Default select example"  name="idpr" formControlName="idProvincia" (change)="cargarLocalidades(this.formularioPersona.controls['idProvincia'].value)" >
+                  <option *ngFor="let prov of provincias" [value]="prov.id">{{prov.nombre}}</option>
+                  </select>
+                  <div *ngIf="formularioEstadia.get('idProvincia')?.invalid && formularioEstadia.get('idProvincia')?.touched">
+                    <div class="text-danger" *ngIf="formularioEstadia.get('idProvincia')?.hasError('required')">Debe seleccionar una provincia</div>
+                  </div>
+                </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Localidad</label>
+                <select class="form-select" aria-label="Default select example" name="idLocalicad" formControlName="idLocalidad"(change)="cargarDescripcion()">
+                    <option *ngFor="let Loc of localidades" [value]="Loc.id">{{Loc.nombre}}</option>
+                  </select>
+                  <div *ngIf="formularioEstadia.get('idLocalidad')?.invalid && formularioEstadia.get('idLocalidad')?.touched">
+                    <div class="text-danger" *ngIf="formularioEstadia.get('idLocalidad')?.hasError('required')">Debe seleccionar una localidad</div>
+                  </div>
+                </div>
+          </form>
+          <form [formGroup]="formularioEstadia">
+            <h5>Estadia:</h5>
+                 <div class="mb-3"> 
+                <label for="exampleInputEmail1" class="form-label">Alojamiento</label>
+                <select class="form-select" aria-label="Default select example" formControlName="idAlojamiento" [ngModel]="this.idAlojamiento" (change)="cargarFechas()">
+                    <option selected>Open this select menu</option>
+                    <option *ngFor="let alo of alojamientos"  [value]="alo.idAlojamiento">{{alo.descripcion}}</option>
+                  </select>
+                  <div *ngIf="formularioEstadia.get('idAlojamiento')?.invalid && formularioEstadia.get('idAlojamiento')?.touched">
+                    <div class="text-danger" *ngIf="formularioEstadia.get('idAlojamiento')?.hasError('required')">Debe seleccionar un alojamiento</div>
+                  </div>
+                </div>
+            <div class="mb-3 row" *ngIf="this.idal">
+                <div class="col-6">      
+                    <label for="date">Fecha Ingreso:</label>     
+                    
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd"
+                               name="dp" type="datetime" ngbDatepicker #d="ngbDatepicker" formControlName="fechaIngreso" [markDisabled]="markDisabled">
+                        <div class="input-group-append">
+                          <a class="btn btn-outline-secondary bg-white d-block" (click)="d.toggle()" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+                              <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                              <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  
+            </div>
+            <div class="col-6">
+                <label for="date">Fecha Egreso:</label>     
+                
+                <div class="form-group">
+                  <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd"
+                           name="dp" type="datetime" ngbDatepicker #d2="ngbDatepicker" formControlName="fechaEgreso" [markDisabled]="markDisabled">
+                    <div class="input-group-append">
+                      <a class="btn btn-outline-secondary bg-white d-block" (click)="d2.toggle()" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+                          <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              
+            </div>  
+            </div>
+            <div class="mb-3 row">
+                <div class="col-6">            
+                    <label for="exampleInputEmail1" class="form-label">Cantidad Personas:</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" formControlName="cantPersonas">
+                </div>
+                <div *ngIf="formularioPersona.get('cantPersonas')?.invalid && formularioPersona.get('cantPersonas')?.touched">
+                  <div class="text-danger" *ngIf="formularioPersona.get('cantPersonas')?.hasError('required')"> Ingrese la cantida de personas</div>
+                </div>
+            </div>
+            <button type="submit" class="custom-btn btn-2" (click)="guardar()">Enviar</button>
+          </form>
+

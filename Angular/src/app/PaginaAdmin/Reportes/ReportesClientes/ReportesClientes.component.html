@@ -1,0 +1,29 @@
+<app-Reportes></app-Reportes>
+<div class="row">
+  <div class="col-4">
+    <h4>Clientes por provincias:</h4>
+    <canvas baseChart [type]="'pie'" [data]="provincia" [options]="optionsProv"></canvas>
+  </div>
+  <div class="col-8">
+    <h4>Cantidad de personas por mes:</h4>
+    <h5>Comparar con otro año</h5>
+    <label for="exampleInputEmail1" class="form-label">Ingresa el año</label>
+    <input type="number" class="form-control" id="exampleInputEmail1" #inputAnio>
+    <button (click)="comparar(inputAnio.value)">Buscar</button>
+    <canvas *ngIf="!comp"  baseChart
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [legend]="barChartLegend"
+></canvas>
+<canvas *ngIf="comp"  baseChart
+[datasets]="barChartData"
+[labels]="barChartLabels"
+[options]="barChartOptions"
+[legend]="barChartLegend"
+></canvas>
+  </div>
+</div>
+
+
+  

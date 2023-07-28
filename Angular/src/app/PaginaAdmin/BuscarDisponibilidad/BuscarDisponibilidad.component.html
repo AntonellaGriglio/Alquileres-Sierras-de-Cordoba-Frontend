@@ -1,0 +1,58 @@
+<app-nav-admin [idComplejo]="this.idComplejo" ></app-nav-admin>
+<form [formGroup]="formulario" >
+  <div class="row">
+    <h5 class="title">Los alojamientos disponibles en ese rango de fechas</h5>
+    <div class="mb-3 row">
+      <div class="col-6">      
+          <label for="date">Fecha Ingreso:</label>     
+          
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" type="datetime" ngbDatepicker #d="ngbDatepicker" formControlName="fechaIngreso" >
+              <div class="input-group-append">
+                <a class="btn btn-outline-secondary bg-white d-block" (click)="d.toggle()" type="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+                    <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        
+  </div>
+  <div class="col-6">
+      <label for="date">Fecha Egreso:</label>     
+      
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd"
+                 name="dp" type="datetime" ngbDatepicker #d2="ngbDatepicker" formControlName="fechaEgreso">
+          <div class="input-group-append">
+            <a class="btn btn-outline-secondary bg-white d-block" (click)="d2.toggle()" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+                <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    
+  </div>  
+</div> 
+<button (click)="guardar()" class="custom-btn btn-2">Buscar</button>
+</div> 
+
+      </form>
+  <div class="row ">
+      <div class="col-4 " *ngFor="let alojamiento of alojamientos" >
+        <div class="card" style="width: 18rem; ">
+          <div class="card-body">
+            <h5 class="card-title">{{alojamiento.descripcion}}</h5>
+            <p class="card-text">Cantidad total de Personas: {{alojamiento.cantidadPersonas}}</p>
+          </div>
+        </div>
+      </div>
+    </div>

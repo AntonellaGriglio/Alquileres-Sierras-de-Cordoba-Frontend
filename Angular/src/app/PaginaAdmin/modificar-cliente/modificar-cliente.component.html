@@ -1,0 +1,39 @@
+<app-nav-admin [idComplejo]="idComplejo"></app-nav-admin>
+<div class="row">
+  <div class="col 2"></div>
+  <div class="col-8 consulta">
+<form >
+    <h5>Cliente: </h5>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="nombre" [(ngModel)]="persona.nombre">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" name="apellido" [(ngModel)]="persona.apellido" >
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Telefono</label>
+      <input type="string" class="form-control" id="exampleInputEmail1" name="telefono" [(ngModel)]="persona.telefono" >
+  </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" name="email"  aria-describedby="emailHelp" [(ngModel)]="persona.email">
+    </div>
+    <div class="mb-3"  >
+        <label for="exampleInputEmail1" class="form-label">Provincia</label>
+        <select class="form-select" aria-label="Default select example"  name="idpr" [(ngModel)]="persona.idProvincia" (change)="cargarLocalidades(persona.idProvincia)" >
+          <option *ngFor="let prov of provincias" [value]="prov.id">{{prov.nombre}}</option>
+          </select>
+    </div>
+    <div class="mb-3" >
+        <label for="exampleInputEmail1" class="form-label">Localidad</label>
+        <select class="form-select" aria-label="Default select example" name="idLocalicad" [(ngModel)]="persona.idLocalidad" (change)="cargarDescripcion()">
+            <option *ngFor="let Loc of localidades" [value]="Loc.id">{{Loc.nombre}}</option>
+          </select>
+    </div>
+    <div><button class="custom-btn btn-2" type="button" (click)="editarCliente()">Guardar</button></div>
+  </form>
+</div>
+<div class="col 2"></div>
+</div>

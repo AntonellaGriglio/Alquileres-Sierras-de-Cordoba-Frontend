@@ -1,0 +1,45 @@
+<app-Reportes></app-Reportes>
+<div class="row">
+  <div class="col-6">
+    <div> 
+      <h4>Días Ocupados del año</h4>
+      <h5>Comparar con otro año</h5>
+      <label for="anioInput" class="form-label">Ingresa el año</label>
+      <input type="number" class="form-control" id="anioInput" [(ngModel)]="selectAnio">
+      <button (click)="compararAnio(selectAnio)">Buscar</button>
+      <canvas baseChart [type]="'bar'" [data]="diasOcupadoXalojamiento"></canvas>
+    </div>
+    </div>
+    <div class="col-6">
+      <div>
+        <h4>Días Ocupados del mes</h4>
+        <h5>Comparar con otro mes</h5>
+        <label for="mesSelect" class="form-label">Selecciona un mes</label>
+        <select class="form-select" id="mesSelect" [(ngModel)]="selectMes">
+          <option disabled selected>Selecciona un mes</option>
+          <option value="1">Enero</option>
+          <option value="2">Febrero</option>
+          <option value="3">Marzo</option>
+          <option value="4">Abril</option>
+          <option value="5">Mayo</option>
+          <option value="6">Junio</option>
+          <option value="7">Julio</option>
+          <option value="8">Agosto</option>
+          <option value="9">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+        <button (click)="compararMes(selectMes)">Buscar</button>
+        <canvas baseChart [type]="'bar'" [data]="diasOcupadoXalojamientoXmes"></canvas>
+      </div>
+    </div>
+    </div>
+<div class="row">
+ <div class="col-4"></div>
+  <div class="col-4">
+    <h4>Estado:</h4>
+    <canvas baseChart [type]="'pie'" [data]="diasOcupadosXestados"></canvas>
+  </div>
+  <div class="col-4"></div>
+</div>

@@ -1,0 +1,35 @@
+<app-nav-admin [idComplejo]="idComplejo"></app-nav-admin>
+<div class="row">
+    <div class="col-2"></div>
+ <div class="col-8 consulta">
+<div>
+    <div>
+        <h5>Cliente:  {{persona.nombre}}, {{persona.apellido}}</h5>
+    </div>
+    <div>
+        <h5>Importe Total: {{importe}}</h5>
+    </div>
+</div>
+<form>
+    <h5>Pagos:</h5> 
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Importe a pagar</label>
+        <input type="text" class="form-control" [(ngModel)]="pago.importe" name="importe">
+    </div>
+    <div class="mb-3"> 
+        <label for="exampleInputEmail1" class="form-label">Forma de Pago</label>
+        <select class="form-select" aria-label="Default select example" name="idFormasDePagos" [(ngModel)]="pago.idFormaPago">
+            <option selected>Open this select menu</option>
+            <option *ngFor="let pag of formasDePagos" [value]="pag.idFormasDePagos">{{pag.descripcion}}</option>
+          </select></div>
+    <div class="mb-3">  <label class="form-label">Tipo de pago:</label>
+        <select class="form-select" aria-label="Default select example" name="idTipoPago" [(ngModel)]="pago.idTipoPago">
+            <option selected>Open this select menu</option>
+            <option *ngFor="let tip of tiposPagos" [value]="tip.idTiposPagos">{{tip.descripcion}}</option>
+          </select>
+        </div>
+    <button type="submit" class="custom-btn btn-2" (click)="guardar()">Guardar</button>
+  </form>
+</div>
+  <div class="col-2"></div>
+</div>

@@ -1,0 +1,60 @@
+<app-nav-inicio></app-nav-inicio>
+  <div class="mb-3 row fotos">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide hola">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div >
+    <div class="carousel-inner" >
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="https://2.bp.blogspot.com/-6NN-3AZ-zHU/Uijp88twAJI/AAAAAAAACn8/x5kN1gefb44/s1600/Sierras+de+C%C3%B3rdoba.jpg" class="d-block w-100 h-50" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Alquileres Punilla</h5>
+          <p>Busca el lugar perfecto para vos en el departamento de punilla</p>
+        </div>
+      </div>
+      <div class="carousel-item fotos" data-bs-interval="2000">
+        <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/MGWTYZAD4NBVFMRDURLOYCATDY.jpg" class="d-block w-100 h-50" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Alquileres Punilla</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item fotos">
+        <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/TYZVUWFZTVFWVEY4FUI2B675ZU.jpg" class="d-block w-100 h-50" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Alquileres Punilla</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  </div>
+  <div class="row"></div>
+  <div class="row">
+    <div class="col-3 " *ngFor="let complejo of listaComplejos" >
+      <div class="card" style="width: 18rem; ">
+        <img src={{complejo.linkFotos}} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{complejo.nombreComplejo}}</h5>
+          <a href="#" class="btn-2 custom-btn"  routerLink="listaAlojamiento/complejo.idComplejo" (click)="idComplejo(complejo.idComplejo)">+ Información</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <div class="row">
+ <!-- Site footer -->
+<div>
+  <app-footer></app-footer>
+</div>
+

@@ -1,0 +1,27 @@
+<app-nav-admin [idComplejo]="this.idComplejo"></app-nav-admin>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let cliente of listado | paginate: paginationConfig">
+      <tr>
+        <th scope="row"></th>
+        <td >{{cliente.nombre}}</td>
+        <td>{{cliente.apellido}}</td>
+        <td>{{cliente.telefono}}</td>
+        <td>{{cliente.email}}</td>
+        <td> <button class="custom-btn btn-2" type="button" [routerLink]="'/modificarCliente/'+idComplejo+'/'+cliente.idpersona" >Modificar</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row pag">
+    <!-- Pagination controls -->
+    <pagination-controls [currentPage]="paginationConfig.currentPage" (pageChange)="onPageChange($event)" id="h" [config]="paginationConfig"></pagination-controls>
+  </div>

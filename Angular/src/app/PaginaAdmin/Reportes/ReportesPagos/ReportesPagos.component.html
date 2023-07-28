@@ -1,0 +1,24 @@
+<app-Reportes></app-Reportes>
+
+
+<div class="row">
+  <div style="display: block;" class="col-8">
+    <h5>Recaudacion Total del Año ${{this.recaudacionTotalAnio}}</h5>
+    <div>
+      <h6>Recaudacion Total por alojamiento</h6>
+      
+    <label for="exampleInputEmail1" class="form-label">Ingresa el año</label>
+    <input type="number" class="form-control" id="exampleInputEmail1" [(ngModel)]="this.selectAnio">
+    <button (click)="compararRecaudaciones(this.selectAnio)">Buscar</button>
+      <canvas baseChart [type]="'bar'" [data]="recaudacionXalojamiento"></canvas>
+    </div>
+    </div>
+    <div style="display: block;" class="col-4">
+    <h4>Uso formas de pago:</h4>
+      <canvas baseChart [type]="'pie'" [data]="pagos"></canvas>
+    </div>
+</div>
+
+
+
+
